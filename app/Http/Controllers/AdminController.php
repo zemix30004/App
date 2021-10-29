@@ -10,9 +10,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        dd($user);
+
         // $users = User::get();
-        // return view('admin.index');
+        return view('admin.index');
     }
 }
