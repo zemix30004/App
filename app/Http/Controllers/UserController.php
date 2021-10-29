@@ -37,7 +37,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = User::create($request->all());
+        return response()->redirectTo('/admin/users');
     }
 
     /**
@@ -59,7 +60,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -71,7 +73,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::where('id', $id)->update([
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+        ]);
+        return response()->redirectTo('/admin/users');
     }
 
     /**
@@ -82,6 +88,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return response()->redirectTo('/admin/users');
     }
 }

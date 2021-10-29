@@ -12,8 +12,9 @@
     <a href="/admin/users/create">Создать</a><br>
 
     @foreach ($users as $key => $user)
-    <a href='/admin/users/{{$user->id}}/edit'>{{ $user->firstname}} {{ $user->lastname }}</a>
-    <form action="/admin/users/{{$user->id}}/delete" method="POST">
+    <a href="{{ route('users.edit', $user) }}">{{ $user->firstname}} {{ $user->lastname }}</a>
+    <form action="{{ route('users.destroy', $user) }}" method="POST">
+        @method('DELETE')
         @csrf
         <input type="submit" value="Удалить">
     </form>

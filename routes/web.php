@@ -21,11 +21,18 @@ use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', [PostController::class, 'index'])->name('tasks.index');
 Route::get('/', [StartController::class, 'index'])->name('index');
+Route::get('/books', [StartController::class, 'ibooks'])->name('books');
+Route::get('/categories', [StartController::class, 'categories'])->name('categories');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index']);
-    Route::get('/users', [UserController::class, 'index']);
-    Route::get('/users/create', [UserController::class, 'create']);
+    Route::resource('users', UserController::class);
+    // Route::get('/users', [UserController::class, 'index']);
+    // Route::get('/users/create', [UserController::class, 'create']);
+    // Route::post('/users/store', [UserController::class, 'store']);
+    // Route::get('/users/{id}/edit', [UserController::class, 'edit']);
+    // Route::post('/users/{id}/update', [UserController::class, 'update']);
+    // Route::post('/users/{id}/delete', [UserController::class, 'destroy']);
 });
 
 Auth::routes();
