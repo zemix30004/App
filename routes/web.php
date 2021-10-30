@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', [PostController::class, 'index'])->name('tasks.index');
 Route::get('/', [StartController::class, 'index'])->name('index');
-Route::get('/books', [StartController::class, 'ibooks'])->name('books');
+Route::get('/books', [StartController::class, 'books'])->name('books');
 Route::get('/categories', [StartController::class, 'categories'])->name('categories');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
