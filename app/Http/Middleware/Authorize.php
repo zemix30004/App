@@ -19,7 +19,8 @@ class Authorize
     {
 
         if (!Auth::user()) {
-            return response()->redirectTo('/login');
+            return response()->json(['error' => 'Not Authorize'], 401);
+            // return response()->redirectTo('/login');
         }
         return $next($request);
     }

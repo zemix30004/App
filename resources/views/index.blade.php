@@ -14,11 +14,15 @@
         <b>
         <a href='author.php?id={{ $user->id}}'>
             {{ $user->firstname }} {{ $user->lastname }}
+            {{-- @foreach ($books as $key => $book )
+                <a href={{ $book->id}}'>
+                {{ $book->book_id}}</a>
+            @endforeach --}}
         </a>
-
+        <li>Книга 1</li>
+        <li>Книга 2</li>
         </b>
     </ul>
     @endforeach
-
 </body>
 </html>

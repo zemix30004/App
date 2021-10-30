@@ -12,8 +12,13 @@ class StartController extends Controller
 {
     public function index()
     {
-
-        $users = User::with('books')->get();
+        $users = User::with(['books' => function ($q) {
+            $q->with('categories');
+        }])->whereHas('books', function ($q) {
+            $q->whereHas('categories', function ($query) {
+                $query->where('category_books.category_id', 1);
+            });
+        })->get();
         return view('index', ['users' => $users]);
     }
 
@@ -21,12 +26,10 @@ class StartController extends Controller
     {
 
         $books = Book::with('categories')->get();
-        dd($books);
     }
 
     public function categories()
     {
         $categories = Category::with('books')->get();
-        dd($categories);
     }
 }
