@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,15 +14,31 @@
         <b>
         <a href='author.php?id={{ $user->id}}'>
             {{ $user->firstname }} {{ $user->lastname }}
-            {{-- @foreach ($books as $key => $book )
-                <a href={{ $book->id}}'>
-                {{ $book->book_id}}</a>
-            @endforeach --}}
         </a>
-        <li>Книга 1</li>
-        <li>Книга 2</li>
-        </b>
-    </ul>
+@foreach ($user->books as $book )
+<li>{{ $book->name }}</li>
+@endforeach
+        </ul>
+    </b>
     @endforeach
 </body>
-</html>
+</html> --}}
+@include('layouts.head')
+@include('layouts.navigation', ['navigation' => $navigation])
+
+<h1>Авторы</h1>
+<a href="/login">В админку</a>
+@foreach ($users as $key => $user )
+<ul>
+    <b>
+    <a href='author.php?id={{ $user->id}}'>
+        {{ $user->firstname }} {{ $user->lastname }}</a>
+@foreach ($user->books as $book )
+<li>{{ $book->name }}</li>
+@endforeach
+    </b>
+</ul>
+@endforeach
+
+@include('layouts.footer')
+

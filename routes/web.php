@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [StartController::class, 'index'])->name('index');
 Route::get('/books', [StartController::class, 'books'])->name('books');
 Route::get('/categories', [StartController::class, 'categories'])->name('categories');
+Route::get('/order/create', [OrderController::class, 'create'])->name('create');
+Route::post('/order/store', [OrderController::class, 'cstore'])->name('store');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index']);

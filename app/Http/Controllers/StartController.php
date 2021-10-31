@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Navigation;
 
 use Illuminate\Http\Request;
 
